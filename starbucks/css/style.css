@@ -1,0 +1,33 @@
+h1, h2, h3, h4, h5, h6, p, body {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+}
+h1 {
+    font-size: 36px;
+    color: var(--starbucks-green);
+}
+:root {
+    --starbucks-green: #006241;
+}
+
+body {
+background-color: yellow;
+}
+.logo {
+    width: 100px;
+}
+.overlay {
+    background-color: var(--starbucks-green);
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -1000vw;
+    z-index: 1000;
+    transition-property: all;
+    transition-duration: .5s;
+}
+.overlay.active {
+   left: 0;
+}

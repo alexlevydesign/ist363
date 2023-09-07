@@ -7,8 +7,12 @@ h1 {
     font-size: 36px;
     color: var(--starbucks-green);
 }
+ul, li {
+    list-style: none; /* removes bullets */
+}
 :root {
     --starbucks-green: #006241;
+    --medium-gray: rgba(0,0,0,.58);
 }
 
 body {
@@ -30,4 +34,36 @@ background-color: yellow;
 }
 .overlay.active {
    left: 0;
+}
+.mobile-nav {
+    background-color: yellow;
+}
+.mobile-nav a {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    display: block;
+}
+.btn-ui {
+    background-color: white;
+    border: 0;
+    padding: 1rem;
+}
+.btn-ui svg {
+    width: 3rem;
+    height: 3rem;
+    fill: var(--medium-gray);
+}
+#closeBtn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background-color: transparent;
+    border: 1px solid white;
+}
+#closeBtn svg {
+    fill: white;
 }

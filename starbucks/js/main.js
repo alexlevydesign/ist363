@@ -15,7 +15,16 @@ console.log(introduction);
 const menuBtn = document.getElementById("menuBtn");
 const closeBtn = document.getElementById("closeBtn")
  const overlay = document.getElementById("overlay");
-console.log(menuBtn);
+const coffeeList = document.getElementById("coffeeList");
+const ascendingBtn = document.getElementById("ascendingBtn");
+const descendingBtn = document.getElementById("descendingBtn");
+
+function purgeList() {
+    coffeeList.innerHTML = ""
+}
+function sortList() {
+    
+}
 
 // "event name", callback function
 menuBtn.addEventListener("click", function() {
@@ -26,6 +35,20 @@ menuBtn.addEventListener("click", function() {
 closeBtn.addEventListener("click", function() {
     overlay.classList.remove("active");
 } ) // end of closeBtn click event
+
+// ascending button click event
+ascendingBtn.addEventListener ("click", function() {
+    console.log("AscendingBtn clicked");
+    purgeList();
+    sortList("ascending");
+})
+
+// descending button click event
+descendingBtn.addEventListener ("click", function() {
+    console.log("Descending button clicked");
+    purgeList();
+    sortList("descending");
+})
 
 // arrays and objects
 
@@ -84,9 +107,21 @@ function buildTextElement(element,className,content) {
     return newElement;
 }
 
-coffees.forEach(function(coffee) {
-    // deconstruct the coffee object
-const {title, price, description, /*image*/} = coffee;
+const sortedCoffees = [...coffees].sort(function(a,b) {
+    if ( a.title < b.title) {
+        return -1
+    }
+    if (a.title > b.title) {
+        return 1
+    }
+    if (a.title === b.title) {
+        return 0;
+    }
+});
+
+sortedCoffees.forEach(function(coffee) {
+    //1. deconstruct the coffee object
+const {title, price, description, image} = coffee;
 
     //2. Create the html element
     const coffeeArticle = document.createElement("article")
@@ -110,21 +145,21 @@ const {title, price, description, /*image*/} = coffee;
     coffeeDescription.textContent = description;
     
 
-    // const coffeeImage = document.createElement("img");
-    // coffeeImage.src = `images/${image.fileName}`;
-    // coffeeImage.width = image.width;
-    // coffeeImage.height = image.height;
-    // coffeeImage.alt = image.altText;
+    const coffeeImage = document.createElement("img");
+    coffeeImage.src = `images/${image.fileName}`;
+    coffeeImage.width = image.width;
+    coffeeImage.height = image.height;
+    coffeeImage.alt = image.altText;
 
 // 3. Append the elements to the parent article
-//coffeeArticle.appendChild(coffeeImage);
+    coffeeArticle.appendChild(coffeeImage);
     coffeeArticle.appendChild(coffeeTitle);
     coffeeArticle.appendChild(coffeePrice);
     coffeeArticle.appendChild(coffeeDescription);
     
 
     // 4. Append the article to the body
-    document.body.appendChild(coffeeArticle);
+    coffeeList.appendChild(coffeeArticle);
 
     //const coffeeSecondaryHeadline = document.createElement("h2");
     //coffeeSecondaryHeadline.textContent = name;

@@ -134,11 +134,11 @@ const coffees = [
       }
     },
     {
-      "title": "French Press Coffee",
+      "title": "Fresh Press Coffee",
       "price": 3.79,
       "description": "A rich and full-bodied coffee brewed using a French press, known for its strong flavor.",
       "image": {
-        "fileName": "french_press_coffee.jpg",
+        "fileName": "fresh_press_coffee.jpg",
         "width": 500,
         "height": 400,
         "altText": "French Press Coffee"

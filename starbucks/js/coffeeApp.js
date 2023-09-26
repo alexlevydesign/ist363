@@ -2,6 +2,15 @@
 
 const ascendingBtn = document.getElementById("ascendingBtn");
 const descendingBtn = document.getElementById("descendingBtn");
+const priceRanges = document.getElementById("priceRanges");
+
+
+function buildTextElement(element,className,content) {
+    const newElement = document.createElement(element)
+    newElement.classList.add(className);
+    newElement.textContent = content;
+    return newElement;
+}
 
 const purgeList = () => {
     coffeeList.innerHTML = "";  
@@ -35,6 +44,7 @@ const displayList = (arr) => {
         // coffeeTitle.classList.add("coffee-title")
     
         const coffeeTitle = buildTextElement("h2", "coffee-title", title);
+        const coffeePrice = buildTextElement("h3", "coffee-price", `$${price}`);
         
         // const coffeePrice = document.createElement("h3");
         // coffeePrice.textContent = price;
@@ -78,7 +88,7 @@ ascendingBtn.addEventListener ("click", function() {
     const sortedList = sortListByDirection("ascending", coffees);
     // console.log({sortedList});
     displayList(sortedList);
-})
+});
 
 // descending button click event
 descendingBtn.addEventListener ("click", function() {
@@ -88,6 +98,38 @@ descendingBtn.addEventListener ("click", function() {
     // console.log({sortedList});
     displayList(sortedList);
 
-})
+});
+
+priceRanges.addEventListener("change", (event) => {
+    console.log("price range has been changed");
+    console.log(event.target.value);
+    const selectedRange = event.target.value;
+
+    if (selectedRange === "all") {
+        purgeList();
+        displayList (filterCoffees);
+    } else {
+            // "2-3" becomes [2,3]
+    const [minValue, maxValue] = selectedRange.split("-");
+    console.log({minValue, maxValue});
+    filterCoffees(minValue, maxValue);
+    const filteredCoffees = filterCoffees = filterCoffees(minValue, maxValue);
+
+    purgeList();
+    displayList (filterCoffees);
+    }
+
+
+
+    
+});
+
+const filterCoffees = (minValue, maxValue) => {
+    const filteredCoffees = coffees.filter((coffee) => {
+        const { price } = coffee;
+        return price >= minValue && price <= maxValue
+    });
+}
+console.log({filterCoffees});
 
 displayList(coffees);

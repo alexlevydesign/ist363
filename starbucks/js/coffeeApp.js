@@ -3,34 +3,20 @@
 const ascendingBtn = document.getElementById("ascendingBtn");
 const descendingBtn = document.getElementById("descendingBtn");
 const priceRanges = document.getElementById("priceRanges");
+const coffeeList = document.getElementById("coffeeList");
+
+let filteredCoffees = [...coffees];
+let sortDirection = "ascending";
 
 
-function buildTextElement(element,className,content) {
+const buildTextElement = (element, className, content) => {
     const newElement = document.createElement(element)
     newElement.classList.add(className);
     newElement.textContent = content;
     return newElement;
 }
-
-const purgeList = () => {
-    coffeeList.innerHTML = "";  
-}
-const sortListByDirection = (direction, arr) => {
-    console.log({direction});
-    const sortedListArr = [...arr].sort((a,b) => {
-        if (direction === "ascending") {
-            if (a.title < b.title) {
-                return -1;
-            } 
-        } else {
-            if (a.title > b.title) {
-                return -1;
-            }
-        }
-    });
-    return sortedListArr;
-}
 const displayList = (arr) => {
+    purgeList();
     arr.forEach((coffee) => {
         //1. deconstruct the coffee object
     const {title, price, description, image} = coffee;
@@ -80,12 +66,32 @@ const displayList = (arr) => {
         //console.log(coffee);
     }); // end of coffees forEach method
 }
+const purgeList = () => {
+    coffeeList.innerHTML = "";  
+}
+const sortListByDirection = (direction, arr) => {
+    sortDirection = direction;
+    //console.log({direction});
+    const sortedListArr = [...arr].sort((a,b) => {
+        if (direction === "ascending") {
+            if (a.title < b.title) {
+                return -1;
+            } 
+        } else {
+            if (a.title > b.title) {
+                return -1;
+            }
+        }
+    });
+    return sortedListArr;
+}
+
 
 // ascending button click event
 ascendingBtn.addEventListener ("click", function() {
     console.log("AscendingBtn clicked");
-    purgeList();
-    const sortedList = sortListByDirection("ascending", coffees);
+    // purgeList();
+    const sortedList = sortListByDirection("ascending", filteredCoffees);
     // console.log({sortedList});
     displayList(sortedList);
 });
@@ -93,8 +99,8 @@ ascendingBtn.addEventListener ("click", function() {
 // descending button click event
 descendingBtn.addEventListener ("click", function() {
     console.log("Descending button clicked");
-    purgeList();
-    const sortedList = sortListByDirection("descending", coffees);
+    // purgeList();
+    const sortedList = sortListByDirection("descending", filteredCoffees);
     // console.log({sortedList});
     displayList(sortedList);
 
@@ -106,17 +112,18 @@ priceRanges.addEventListener("change", (event) => {
     const selectedRange = event.target.value;
 
     if (selectedRange === "all") {
-        purgeList();
-        displayList (filterCoffees);
+        // purgeList();
+        // displayList (coffees);
+        filteredCoffees = sortListByDirection(sortDirection, [...coffees]);
     } else {
             // "2-3" becomes [2,3]
     const [minValue, maxValue] = selectedRange.split("-");
     console.log({minValue, maxValue});
-    filterCoffees(minValue, maxValue);
-    const filteredCoffees = filterCoffees = filterCoffees(minValue, maxValue);
+    getFilteredCoffees(minValue, maxValue);
+    const filteredCoffees = getFilteredCoffees(minValue, maxValue);
 
-    purgeList();
-    displayList (filterCoffees);
+    // purgeList();
+    displayList (filteredCoffees);
     }
 
 
@@ -124,12 +131,13 @@ priceRanges.addEventListener("change", (event) => {
     
 });
 
-const filterCoffees = (minValue, maxValue) => {
+const getFilteredCoffees = (minValue, maxValue) => {
     const filteredCoffees = coffees.filter((coffee) => {
         const { price } = coffee;
-        return price >= minValue && price <= maxValue
+        return price >= minValue && price <= maxValue;
     });
 }
-console.log({filterCoffees});
+const sortedStarterList = sortListByDirection("ascending", filteredCoffees);
+console.log({filteredCoffees});
 
-displayList(coffees);
+displayList(sortedStarterList);

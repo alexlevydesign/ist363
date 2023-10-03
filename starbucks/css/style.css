@@ -1,137 +1,179 @@
 h1, h2, h3, h4, h5, h6, p, body {
-    margin: 0;
-    padding: 0;
-    font: inherit;
+  margin: 0;
+  padding: 0;
+  font: inherit;
 }
+
+header {
+  background-color: teal;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+header h1 {
+  font-size: 3rem;
+  color: white;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+header button {
+  background-color: pink;
+  padding: 1rem;
+  border: 0;
+}
+header button:hover {
+  background-color: brown;
+}
+header button.active {
+  background-color: yellow;
+}
+
 h1 {
-    font-size: 36px;
-    color: var(--starbucks-green);
+  font-size: 36px;
+  color: var(--starbucks-green);
 }
+
 ul, li {
-    list-style: none; /* removes bullets */
-    padding: 0;
+  list-style: none; /* removes bullets */
+  padding: 0;
 }
+
 * {
-    box-sizing: border-box; /* invert padding */
+  box-sizing: border-box; /* invert padding */
 }
+
 :root {
-    --starbucks-green: #006241;
-    --medium-gray: rgba(0,0,0,.58);
+  --starbucks-green: #006241;
+  --medium-gray: rgba(0,0,0,.58);
 }
 
 body {
-background-color: yellow;
+  background-color: #f94f1a;
+  font-family: Verdana, san-serif;
 }
+
 .logo {
-    width: 8rem;
-    margin-bottom: 2rem;
-    transition-property: all;
-    transition-delay: .25s;
-    transition-duration: .5s;
-    left: -1rem;
-    opacity: 0;
-    
+  width: 8rem;
+  margin-bottom: 2rem;
+  transition-property: all;
+  transition-delay: 0.25s;
+  transition-duration: 0.5s;
+  left: -1rem;
+  opacity: 0;
 }
+
 .overlay {
-    background-color: var(--starbucks-green);
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: -1000vw;
-    z-index: 1000;
-    transition-property: all;
-    transition-duration: .5s;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 2rem;
+  background-color: var(--starbucks-green);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: -1000vw;
+  z-index: 1000;
+  transition-property: all;
+  transition-duration: 0.5s;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 2rem;
 }
+
 .overlay.active {
-   left: 0;
+  left: 0;
 }
+
 .overlay.active .logo {
-    left: 0;
-    opacity: 1;
-    transition-property: all;
-    transition-delay: .25s;
-    transition-duration: .5s;
+  left: 0;
+  opacity: 1;
+  transition-property: all;
+  transition-delay: 0.25s;
+  transition-duration: 0.5s;
 }
-.mobile-nav {
-    
-}
+
 .mobile-nav a {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: white;
-    padding: .5rem 0;
-    display: block;
-    text-decoration: none;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  padding: 0.5rem 0;
+  display: block;
+  text-decoration: none;
 }
+
 .mobile-nav ul li {
-    left: -1rem;
-    opacity: 0;
-    transition-property: all;
-    transition-duration: .5s;
-    position: relative;
+  left: -1rem;
+  opacity: 0;
+  transition-property: all;
+  transition-duration: 0.5s;
+  position: relative;
 }
+
 .overlay.active .mobile-nav ul li {
-    opacity: 1;
-    left: 0;
+  opacity: 1;
+  left: 0;
 }
+
 .overlay.active .mobile-nav ul li:nth-child(1) {
-    transition-delay: .5s;
+  transition-delay: 0.5s;
 }
+
 .overlay.active .mobile-nav ul li:nth-child(2) {
-    
-    transition-delay: .6s;
+  transition-delay: 0.6s;
 }
+
 .overlay.active .mobile-nav ul li:nth-child(3) {
-    transition-delay: .7s;
+  transition-delay: 0.7s;
 }
+
 .btn-ui {
-    background-color: white;
-    border: 0;
-    padding: 1rem;
+  background-color: white;
+  border: 0;
+  padding: 1rem;
 }
+
 .btn-ui svg {
-    width: 3rem;
-    height: 3rem;
-    fill: var(--medium-gray);
+  width: 3rem;
+  height: 3rem;
+  fill: var(--medium-gray);
 }
+
 #closeBtn {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background-color: transparent;
-    border: 1px solid white;
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  border: 1px solid white;
 }
+
 #closeBtn svg {
-    fill: white;
+  fill: white;
 }
+
 .coffee-item {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid gray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid gray;
 }
+
 .coffee-title {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: .5rem;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
+
 .coffee-price {
-    font-size: 1.25rem;
-    font-weight: normal;
-    margin-bottom: .5rem;
-    font-family: Arial, Helvetica, sans-serif;
-    color: gray;
+  font-size: 1.25rem;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: gray;
 }
+
 .coffee-description {
-    font-size: 1rem;
-    font-weight: normal;
-    font-family: Arial, Helvetica, sans-serif;
-    color: black;
+  font-size: 1rem;
+  font-weight: normal;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
 }
+
+/*# sourceMappingURL=style.css.map */

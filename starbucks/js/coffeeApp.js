@@ -119,7 +119,7 @@ priceRanges.addEventListener("change", (event) => {
             // "2-3" becomes [2,3]
     const [minValue, maxValue] = selectedRange.split("-");
     console.log({minValue, maxValue});
-    getFilteredCoffees(minValue, maxValue);
+    // getFilteredCoffees(minValue, maxValue);
     const filteredCoffees = getFilteredCoffees(minValue, maxValue);
 
     // purgeList();
@@ -136,6 +136,7 @@ const getFilteredCoffees = (minValue, maxValue) => {
         const { price } = coffee;
         return price >= minValue && price <= maxValue;
     });
+    return filteredCoffees;
 }
 const sortedStarterList = sortListByDirection("ascending", filteredCoffees);
 console.log({filteredCoffees});

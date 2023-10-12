@@ -307,26 +307,6 @@ template {
   display: none;
 }
 
-h1, h2, h3, h4, h5, h6, p, body {
-  margin: 0;
-  padding: 0;
-  font: inherit;
-}
-
-h1 {
-  font-size: 36px;
-  color: var(--starbucks-green);
-}
-
-ul, li {
-  list-style: none; /* removes bullets */
-  padding: 0;
-}
-
-* {
-  box-sizing: border-box; /* invert padding */
-}
-
 body {
   background-color: #f94f1a;
   font-family: Verdana, san-serif;
@@ -365,14 +345,52 @@ body {
   width: 720px;
 }
 
+h1, h2, h3, h4, h5, h6, p, body {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+h1 {
+  font-size: 36px;
+  color: var(--starbucks-green);
+}
+
+ul, li {
+  list-style: none; /* removes bullets */
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box; /* invert padding */
+}
+
+.btn-ui {
+  background-color: white;
+  border: 0;
+  padding: 1rem;
+}
+
+.btn-ui svg {
+  width: 3rem;
+  height: 3rem;
+  fill: var(--medium-gray);
+}
+
+#closeBtn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background-color: transparent;
+  border: 1px solid white;
+}
+
+#closeBtn svg {
+  fill: white;
+}
+
 .logo {
-  width: 8rem;
-  margin-bottom: 2rem;
-  transition-property: all;
-  transition-delay: 0.25s;
-  transition-duration: 0.5s;
-  left: -1rem;
-  opacity: 0;
+  width: 5rem;
 }
 
 .overlay {
@@ -389,6 +407,14 @@ body {
   justify-content: center;
   flex-direction: column;
   padding: 2rem;
+}
+.overlay .logo {
+  width: 8rem;
+  margin-bottom: 2rem;
+  transition-property: all;
+  transition-delay: 0.25s;
+  transition-duration: 0.5s;
+  left: -1rem;
 }
 
 .overlay.active {
@@ -438,6 +464,25 @@ body {
   transition-delay: 0.7s;
 }
 
+.nav-desktop {
+  background-color: limegreen;
+}
+@media (min-width: 700px) {
+  .nav-desktop {
+    background-color: red;
+  }
+}
+@media (min-width: 980px) {
+  .nav-desktop {
+    background-color: orange;
+  }
+}
+@media (min-width: 1140px) {
+  .nav-desktop {
+    background-color: violet;
+  }
+}
+
 header {
   background-color: teal;
   padding-top: 1rem;
@@ -458,30 +503,6 @@ header button:hover {
 }
 header button.active {
   background-color: yellow;
-}
-
-.btn-ui {
-  background-color: white;
-  border: 0;
-  padding: 1rem;
-}
-
-.btn-ui svg {
-  width: 3rem;
-  height: 3rem;
-  fill: var(--medium-gray);
-}
-
-#closeBtn {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  background-color: transparent;
-  border: 1px solid white;
-}
-
-#closeBtn svg {
-  fill: white;
 }
 
 /*# sourceMappingURL=style.css.map */

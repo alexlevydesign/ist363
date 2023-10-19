@@ -1,5 +1,7 @@
 // console.log("coffeeApp!");
-
+const menuBtn = document.getElementById("menuBtn");
+const closeBtn = document.getElementById("closeBtn")
+const overlay = document.getElementById("overlay");
 const ascendingBtn = document.getElementById("ascendingBtn");
 const descendingBtn = document.getElementById("descendingBtn");
 const priceRanges = document.getElementById("priceRanges");
@@ -86,7 +88,14 @@ const sortListByDirection = (direction, arr) => {
     return sortedListArr;
 }
 
+menuBtn.addEventListener("click", function() {
+    //console.log("menu button has been clicked");
+    overlay.classList.add("active");
+}); // end of menuBtn click event
 
+closeBtn.addEventListener("click", function() {
+    overlay.classList.remove("active");
+} ) // end of closeBtn click event
 // ascending button click event
 ascendingBtn.addEventListener ("click", function() {
     console.log("AscendingBtn clicked");

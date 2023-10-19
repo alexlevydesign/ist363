@@ -1,5 +1,7 @@
+@use '../abstracts/vars';
+
 .overlay {
-        background-color: var(--starbucks-green);
+        background-color: vars.$color_green;
         width: 100vw;
         height: 100vh;
         position: fixed;
@@ -33,37 +35,20 @@
         transition-delay: .25s;
         transition-duration: .5s;
     }
-    .mobile-nav {
-        
-    }
-    .mobile-nav a {
-        font-family: Arial, Helvetica, sans-serif;
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: white;
-        padding: .5rem 0;
-        display: block;
-        text-decoration: none;
-    }
-    .mobile-nav ul li {
-        left: -1rem;
-        opacity: 0;
-        transition-property: all;
-        transition-duration: .5s;
-        position: relative;
-    }
-    .overlay.active .mobile-nav ul li {
+    
+    
+    .overlay.active .nav--mobile ul li {
         opacity: 1;
         left: 0;
     }
-    .overlay.active .mobile-nav ul li:nth-child(1) {
+    .overlay.active .nav--mobile ul li:nth-child(1) {
         transition-delay: .5s;
     }
-    .overlay.active .mobile-nav ul li:nth-child(2) {
+    .overlay.active .nav--mobile ul li:nth-child(2) {
         
         transition-delay: .6s;
     }
-    .overlay.active .mobile-nav ul li:nth-child(3) {
+    .overlay.active .nav--mobile ul li:nth-child(3) {
         transition-delay: .7s;
     }
     
